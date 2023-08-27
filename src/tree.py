@@ -111,5 +111,6 @@ def enrich_tree(tree):
             continue
 
         tree.get(f"ott{ott}").common_name = common_name
-        tree.get(f"ott{ott}").count += int(count)
+        # tree.get(f"ott{ott}").count += int(count)
+        tree.get(f"ott{ott}").count = 1
 

@@ -3,11 +3,11 @@ from PIL import Image, ImageDraw, ImageFont
 FONTSIZE = 20
 FONT = ImageFont.truetype('/usr/share/fonts/noto/NotoSerif-Bold.ttf', FONTSIZE)
 
-BLOCK_WIDTH = 8
-BLOCK_HEIGHT = 40
-GAP_WIDTH = 4
-GAP_HEIGHT = 2
-HEIGHT = 40*BLOCK_HEIGHT
+BLOCK_WIDTH = 18*6
+BLOCK_HEIGHT = 35
+GAP_WIDTH = 3
+GAP_HEIGHT = 3
+HEIGHT = 25*BLOCK_HEIGHT
 
 def draw_text(draw, message, offset, size):
     offset_x, offset_y = offset
@@ -23,8 +23,8 @@ def draw_text(draw, message, offset, size):
             offset_x + (size_x - width) / 2,
             offset_y + (size_y - height) / 2,
         ),
-        message,
-        (0, 0, 0),
+        text=message,
+        fill=(0, 0, 0),
         font=FONT,
     )
 

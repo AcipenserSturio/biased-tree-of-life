@@ -14,5 +14,4 @@ if __name__ == "__main__":
     tree.prune(stage=0)
     tree.prune(stage=1)
     tree.prune(stage=2)
-    # tree.prune(allow_prune_named_taxa=True)
     plot(tree)
