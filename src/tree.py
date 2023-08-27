@@ -61,6 +61,10 @@ class Tree:
             if stage == 0:
                 # don't prune points of divergence
                 # don't prune named taxa
+                if not node.get_count():
+                    self.remove(node)
+                    continue
+
                 if len(node.children) != 1 or node.sci_name:
                     continue
                 self.remove(node)
@@ -111,6 +115,6 @@ def enrich_tree(tree):
             continue
 
         tree.get(f"ott{ott}").common_name = common_name
-        # tree.get(f"ott{ott}").count += int(count)
-        tree.get(f"ott{ott}").count = 1
+        tree.get(f"ott{ott}").count += int(count)
+        # tree.get(f"ott{ott}").count = 4
 
