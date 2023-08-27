@@ -7,7 +7,7 @@ BLOCK_WIDTH = 8
 BLOCK_HEIGHT = 40
 GAP_WIDTH = 4
 GAP_HEIGHT = 2
-HEIGHT = 25*BLOCK_HEIGHT
+HEIGHT = 40*BLOCK_HEIGHT
 
 def draw_text(draw, message, offset, size):
     offset_x, offset_y = offset
@@ -65,4 +65,4 @@ def plot(tree):
     # draw.rectangle((200, 100, 300, 200), fill=(0, 192, 192), outline=(255, 255, 255))
     draw_node(draw, tree.root, 0, 0)
 
-    im.save('tree_of_life.png')
+    im.save("tree_of_life.png")

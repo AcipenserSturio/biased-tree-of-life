@@ -39,15 +39,3 @@ class Node:
         if self.common_name:
             recursion.append([self.common_name, self.count])
         return recursion
-
-    def is_notable(self):
-        # this node was specifically requested to be added
-        if self.common_name:
-            return True
-        # this node is a root
-        if not self.parent:
-            return True
-        # this node is a point of divergence
-        if len(self.children) != 1:
-            return True
-        return False

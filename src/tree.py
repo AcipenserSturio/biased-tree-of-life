@@ -39,20 +39,50 @@ class Tree:
         child.parent = parent
         parent.children.add(child)
 
-    def prune(self):
+    def prune(self, stage):
+
+        """
+        stages:
+        - 0: only prune unnamed clades.
+        - 1: prune unnamed clades that are replaceable with named taxa.
+        - 2: prune named taxa.
+        """
+
         # use copy to avoid runtime errors related to changing dict during iteration
         for node in self.nodes.copy().values():
-            # don't prune notable nodes
-            if node.is_notable():
+
+            # don't prune specially added nodes
+            if node.common_name:
+                continue
+            # don't prune roots
+            if not node.parent:
                 continue
 
-            child = [*node.children][0]
-            parent = node.parent
+            if stage == 0:
+                # don't prune points of divergence
+                # don't prune named taxa
+                if len(node.children) != 1 or node.sci_name:
+                    continue
+                self.remove(node)
 
-            self.tie(parent.id, child.id)
+            if stage == 1:
+                # if a parent is named and is practically identical to node:
+                if node.parent.sci_name and not node.sci_name and len(node.parent.children) == 1:
+                    self.remove(node)
 
-            parent.children.remove(node)
-            del self.nodes[node.id]
+            if stage == 2:
+                # don't prune points of divergence
+                if len(node.children) != 1:
+                    continue
+
+                self.remove(node)
+
+    def remove(self, node):
+        for child in node.children:
+            self.tie(node.parent.id, child.id)
+
+        node.parent.children.remove(node)
+        del self.nodes[node.id]
 
 
 
