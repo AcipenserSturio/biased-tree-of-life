@@ -114,7 +114,9 @@ def enrich_tree(tree):
         if not ott:
             continue
 
-        tree.get(f"ott{ott}").common_name = common_name
-        tree.get(f"ott{ott}").count += int(count)
-        # tree.get(f"ott{ott}").count = 4
+        node = tree.get(f"ott{ott}")
+        if not node.common_name:
+            node.common_name = common_name
+        node.count += int(count)
+        # node.count = 4
 

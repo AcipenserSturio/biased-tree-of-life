@@ -1,13 +1,13 @@
 from PIL import Image, ImageDraw, ImageFont
 
-FONTSIZE = 20
+FONTSIZE = 10
 FONT = ImageFont.truetype('/usr/share/fonts/noto/NotoSerif-Bold.ttf', FONTSIZE)
 
-BLOCK_WIDTH = 8
-BLOCK_HEIGHT = 35
-GAP_WIDTH = 3
-GAP_HEIGHT = 3
-HEIGHT = 30*BLOCK_HEIGHT
+BLOCK_WIDTH = 4
+BLOCK_HEIGHT = 20
+GAP_WIDTH = 2
+GAP_HEIGHT = 2
+HEIGHT = 50*BLOCK_HEIGHT
 LEAF_MARGIN = 5
 
 def textbox_size(message, offset, size):
